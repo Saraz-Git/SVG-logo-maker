@@ -1,11 +1,9 @@
-// Runs the application using imports from lib/
 // Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require('fs/promises');
 const { Circle, Triangle, Square } = require('./lib/shapes');
 
-
-
+// Create a function to generate content for SVG file
 function generateSVG(data) {
     if (data.shape === 'circle') { userShape = new Circle() };
     if (data.shape === 'triangle') { userShape = new Triangle() };
@@ -19,8 +17,7 @@ function generateSVG(data) {
 
   <text x="150" y="125" font-size="60" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="${data.color}">${data.text}</text>
 
-</svg>
-    
+</svg>   
     `;
 }
 
@@ -56,9 +53,9 @@ const questions = [
 const init = async () => {
     try {
         const answer = await inquirer.prompt(questions);
-
         const SVGFile = generateSVG(answer);
-        await fs.writeFile("./examples/logo.svg", SVGFile, () => console.log('Generated logo.svg'));
+        await fs.writeFile("./examples/logo.svg", SVGFile);
+        console.log('Generated logo.svg');
     } catch (err) {
         console.log(err);
     }
