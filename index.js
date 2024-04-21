@@ -9,7 +9,7 @@ function generateSVG(data) {
     if (data.shape === 'triangle') { userShape = new Triangle() };
     if (data.shape === 'square') { userShape = new Square() };
     userShape.setColor(data.fill);
-
+    if (data.color === data.fill || data.text.length === 0 || data.text.length > 3 || (/\s/).test(data.text)) { throw new Error('wrong text format'); };
     return `
     <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
