@@ -5,20 +5,13 @@ const { Circle, Triangle, Square } = require('./lib/shapes');
 
 // Create a function to generate content for SVG file
 function generateSVG(data) {
-    if (data.shape === 'circle') { userShape = new Circle() };
-    if (data.shape === 'triangle') { userShape = new Triangle() };
-    if (data.shape === 'square') { userShape = new Square() };
-    userShape.setColor(data.fill);
-    if (data.color === data.fill || data.text.length === 0 || data.text.length > 3 || (/\s/).test(data.text)) { throw new Error('wrong text format'); };
-    return `
-    <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-
-  ${userShape.render()}
-
-  <text x="150" y="125" font-size="60" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="${data.color}">${data.text}</text>
-
-</svg>   
-    `;
+    const { text, color, shape, fill } = data;
+    if (color === fill || text.length === 0 || text.length > 3 || (/\s/).test(text)) { throw new Error('wrong text format'); };
+    if (shape === 'circle') { userShape = new Circle(fill, text, color) };
+    if (shape === 'triangle') { userShape = new Triangle(fill, text, color) };
+    if (shape === 'square') { userShape = new Square(fill, text, color) };
+    userShape.setColor(fill);
+    return userShape.renderSVG();
 }
 
 // Create an array of questions for user input
@@ -27,13 +20,13 @@ const questions = [
         type: "input",
         message: "Please enter up to three characters for the logo",
         name: "text",
-        default: "ABC",
+        default: "SVG",
     },
     {
         type: 'input',
         name: 'color',
         message: 'For text color, please enter a color keyword OR hex code?',
-        default: "black",
+        default: "#A98067",
     },
     {
         type: "list",
@@ -45,7 +38,7 @@ const questions = [
         type: 'input',
         name: 'fill',
         message: 'For the color of the shape, please enter a color keyword OR hex code?',
-        default: "mediumslateblue",
+        default: "#E8D9EC",
     },
 ];
 
