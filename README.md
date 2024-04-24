@@ -4,15 +4,33 @@
 
 This Node.js command-line application that takes in user input to generate a logo and save it as an [SVG file](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). The application prompts the user to select a color and shape, provide text for the logo, and save the generated SVG to a `.svg` file.
 
-### User Story
+## Installation
 
-```md
-AS a freelance web developer
-I WANT to generate a simple logo for my projects
-SO THAT I don't have to pay a graphic designer
+To clone and run this repository you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
 ```
+# Clone this repository
+git clone git@github.com:Saraz-Git/SVG-logo-maker.git
 
-## Acceptance Criteria
+# Go into the repository
+cd SVG-logo-maker
+
+# Install dependencies
+npm i
+
+# Run the app
+npm start
+```
+## Usage
+
+The following image shows the application's appearance and functionality:
+
+![GIF image showing screenshot of app running.](./images/svg-logo-maker-demo.gif)
+
+The following image shows a mock-up of the generated SVG given the following input entered by the user: `SVG` for the text, `white` for the text color, `circle` from the list of shapes, and `green` for the shape color. Note that this is just an image of the output SVG and not the SVG file itself:
+
+![Image showing a green circle with white text that reads "SVG.".](./images/10-oop-homework-demo.png)
+
+## Features
 
 ```md
 GIVEN a command-line application that accepts user input
@@ -30,27 +48,6 @@ AND the output text "Generated logo.svg" is printed in the command line
 WHEN I open the `logo.svg` file in a browser
 THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ```
-## Installation
-
-To clone and run this repository you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
-```
-# Clone this repository
-git clone git@github.com:Saraz-Git/SVG-logo-maker.git
-
-# Go into the repository
-cd SVG-logo-maker
-
-# Install dependencies
-npm i
-
-# Run the app
-npm start
-```
-## Mock-Up
-
-The following image shows a mock-up of the generated SVG given the following input entered by the user: `SVG` for the text, `white` for the text color, `circle` from the list of shapes, and `green` for the shape color. Note that this is just an image of the output SVG and not the SVG file itself:
-
-![Image showing a green circle with white text that reads "SVG.".](./images/10-oop-homework-demo.png)
 ## Tests
 
 This application use [Jest](https://www.npmjs.com/package/jest) for running the unit tests and [Inquirer](https://www.npmjs.com/package/inquirer/v/8.2.4) for collecting input from the user. The test file will be invoked by using the following command:
@@ -98,9 +95,9 @@ expect(shape.render()).toEqual('<polygon points="150, 18 244, 182 56, 182" fill=
 
 ## Review
 
-* A walkthrough video that demonstrates the functionality of the application and passing tests: [video]()
+* A walkthrough video that demonstrates the functionality of the application and passing tests: [video](https://www.loom.com/share/bc8053e6cb744afeafae14c943a66197)
 
-* At least one sample SVG file generated using your application.
+* Sample SVG files generated using this application in the examples folder.
 
 * The URL of the GitHub repository: https://github.com/Saraz-Git/SVG-logo-maker
 
