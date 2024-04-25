@@ -1,15 +1,13 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require('fs/promises');
-const { Circle, Triangle, Square } = require('./lib/shapes');
+const shapes = require('./lib/shapes');
 
 // Create a function to generate content for SVG file
 function generateSVG(data) {
     const { text, color, shape, fill } = data;
     if (color === fill || text.length === 0 || text.length > 3 || (/\s/).test(text)) { throw new Error('wrong text format'); };
-    if (shape === 'circle') { userShape = new Circle(fill, text, color) };
-    if (shape === 'triangle') { userShape = new Triangle(fill, text, color) };
-    if (shape === 'square') { userShape = new Square(fill, text, color) };
+    userShape = new shapes[shape](fill, text, color);
     userShape.setColor(fill);
     return userShape.renderSVG();
 }
@@ -32,7 +30,7 @@ const questions = [
         type: "list",
         message: "Choose the shape of the logo",
         name: "shape",
-        choices: ["circle", "triangle", "square"],
+        choices: ["Circle", "Triangle", "Square"],
     },
     {
         type: 'input',
