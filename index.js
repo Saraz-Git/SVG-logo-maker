@@ -7,7 +7,7 @@ const shapes = require('./lib/shapes');
 function generateSVG(data) {
     const { text, color, shape, fill } = data;
     if (color === fill || text.length === 0 || text.length > 3 || (/\s/).test(text)) { throw new Error('wrong text format'); };
-    userShape = new shapes[shape](fill, text, color);
+    userShape = new shapes[shape[0].toUpperCase() + shape.slice(1)](fill, text, color);
     userShape.setColor(fill);
     return userShape.renderSVG();
 }
@@ -30,7 +30,7 @@ const questions = [
         type: "list",
         message: "Choose the shape of the logo",
         name: "shape",
-        choices: ["Circle", "Triangle", "Square"],
+        choices: ["circle", "triangle", "square"],
     },
     {
         type: 'input',
